@@ -16,6 +16,6 @@ public class PostController {
     @GetMapping("/")
     public Object seznam() {
         return new ModelAndView("seznam")
-                .addObject("prispevky", this.serivce.list());
+                .addObject("zapisky", serivce.list());
     }
 }

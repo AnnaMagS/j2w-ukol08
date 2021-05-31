@@ -10,7 +10,7 @@
 <body>
 <nav class="navbar navbar-expand-md navbar-dark bg-primary mb-4">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/" th:href="@{/}">Seznam členů</a>
+        <a class="navbar-brand" href="/" th:href="@{/}">Seznam příspěvků</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse"
                 aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -32,7 +32,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="post : ${prispevky}">
+        <tr th:each="post : ${zapisky}">
             <td th:text="${post.title}">Titulek</td>
             <td th:text="${post.perex}">Perex</td>
             <td th:text="${#temporals.format(post.published)}">4. února 1820</td>
