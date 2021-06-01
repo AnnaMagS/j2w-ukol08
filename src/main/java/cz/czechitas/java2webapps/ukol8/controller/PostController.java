@@ -1,10 +1,15 @@
 package cz.czechitas.java2webapps.ukol8.controller;
 
+import cz.czechitas.java2webapps.ukol8.entity.Post;
 import cz.czechitas.java2webapps.ukol8.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.Optional;
 
 @Controller
 public class PostController {
@@ -19,5 +24,15 @@ public class PostController {
     public Object seznam() {
         return new ModelAndView("seznam")
                 .addObject("zapisky", serivce.list());
+    }
+
+    @GetMapping("/{slug:[0-9]+}")
+    public Object detail(@PathVariable String slug) {
+        Optional<Post> post = Optional.ofNullable(serivce.singlePost(slug));
+        if (post.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        return new ModelAndView("detail")
+                .addObject("post", post.get());
     }
 }
