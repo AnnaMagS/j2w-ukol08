@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @Repository
 public interface PostRepository extends JpaRepository<Post, Long> {
 
-    Page<Post> findByPublished(LocalDate datum, Pageable pageable);
+    Page<Post> findByPublished(LocalDate published, Pageable pageable);
 
     Post findBySlug(String slug);
 }

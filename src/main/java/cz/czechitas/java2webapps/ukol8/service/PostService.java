@@ -29,11 +29,9 @@ public class PostService {
 
     public Page<Post> list(Pageable pageable) {
         pageable = PageRequest.of(0,20);
-        return postRepository.findAll(pageable);
-        //return postRepository.findByPublished(LocalDate.now(), pageable);
+        //return postRepository.findAll(pageable);
+        return postRepository.findByPublished(LocalDate.now(), pageable);
     }
-
-
 
     public Post singlePost(String slug){
         return postRepository.findBySlug(slug);
